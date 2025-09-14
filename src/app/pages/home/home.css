@@ -1,0 +1,10 @@
+.masthead{
+  height: 40vh;
+  background-image: url('/assets/home/masthead.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

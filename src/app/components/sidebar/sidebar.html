@@ -1,0 +1,28 @@
+<section class="card">
+  <div class="card-body">
+    <section>
+      <h6 class="card-title">Categories</h6>
+      <ul class="list-unstyled">
+        <li><a href="">Inicio</a></li>
+        <li><a href="">Inicio</a></li>
+        <li><a href="">Inicio</a></li>
+        <li><a href="">Inicio</a></li>
+      </ul>
+      <hr />
+      <h6 class="card-title">Recent Posts</h6>
+    </section>
+    <section>
+      @for (post of posts; track post.id) {
+      <article class="row mb-3  align-items-center">
+        <div class="col-5">
+          <img src="{{post.imageUrl}}" alt="" class="img-fluid rounded">
+        </div>
+        <div class="col-7 p-0 m-0">
+          <a href="">{{post.title}}</a>
+          <p class="m-0">Jan 1, 2024</p>
+        </div>
+      </article>
+      }
+    </section>
+  </div>
+</section>
