@@ -11,19 +11,22 @@
   </div>
 </header>
 
-<main class="container  row gx-4 gx-lg-5 justify-content-between mt-5">
+<div class="container" style="width: 80%;">
+  <div class="row gx-4 gx-lg-5 justify-content-between mt-5">
+    <main class=" col-9">
 
-  <section class="col-9">
-    @for (post of posts; track post.id) {
-    <article class="mb-4">
-      <app-posts [post]="post"></app-posts>
-    </article>
-    }
+      <section class="col-9">
+        @for (post of posts; track post.id) {
+        <article class="mb-4">
+          <app-posts [post]="post"></app-posts>
+        </article>
+        }
 
-  </section>
+      </section>
 
-  <aside class="col-3">
-    <app-sidebar [posts]="posts"></app-sidebar>
-  </aside>
-
-</main>
+    </main>
+    <aside class="col-3">
+      <app-sidebar></app-sidebar>
+    </aside>
+  </div>
+</div>
