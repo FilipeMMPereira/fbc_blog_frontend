@@ -1,0 +1,96 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Criar Novo Post</h2>
+
+          <form (ngSubmit)="onSubmit()" #postForm="ngForm">
+            <div class="mb-3">
+              <label for="title" class="form-label">Título</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                [(ngModel)]="postData.title"
+                required
+                minlength="5"
+                #title="ngModel">
+              <div class="text-danger" *ngIf="title.invalid && title.touched">
+                Título deve ter pelo menos 5 caracteres
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="category" class="form-label">Categoria</label>
+              <select
+                class="form-select"
+                id="category"
+                name="category"
+                [(ngModel)]="postData.categoryId"
+                required
+                #category="ngModel">
+                <option value="0" disabled>Selecione uma categoria</option>
+                <option *ngFor="let cat of categories" [value]="cat.id">
+                  {{cat.name}}
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="category.invalid && category.touched">
+                Por favor, selecione uma categoria
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="content" class="form-label">Conteúdo</label>
+              <textarea
+                class="form-control"
+                id="content"
+                name="content"
+                rows="10"
+                [(ngModel)]="postData.content"
+                required
+                minlength="50"
+                #content="ngModel"></textarea>
+              <div class="text-danger" *ngIf="content.invalid && content.touched">
+                Conteúdo deve ter pelo menos 50 caracteres
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="image" class="form-label">Imagem de Capa</label>
+              <input
+                type="file"
+                class="form-control"
+                id="image"
+                accept="image/*"
+                (change)="onFileSelected($event)"
+                required>
+              <small class="text-muted">
+                Selecione uma imagem para a capa do post
+              </small>
+            </div>
+
+            <!-- Preview da imagem -->
+            <div class="mb-4" *ngIf="imagePreviewUrl">
+              <img
+                [src]="imagePreviewUrl"
+                class="img-thumbnail"
+                style="max-height: 200px">
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-secondary">Cancelar</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="postForm.invalid || !imageFile">
+                Criar Post
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,7 +26,7 @@ export class Login {
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
         // Guardar o token
         localStorage.setItem('token', data.token);

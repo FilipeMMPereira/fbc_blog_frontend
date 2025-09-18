@@ -1,0 +1,40 @@
+.post-form .card {
+  border: none;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+.post-form .form-control:focus,
+.post-form .form-select:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+.post-form textarea {
+  min-height: 300px;
+  resize: vertical;
+}
+
+.image-preview {
+  max-width: 100%;
+  margin-top: 1rem;
+}
+
+.image-preview img {
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+.drag-drop-zone {
+  border: 2px dashed #dee2e6;
+  border-radius: 0.25rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.drag-drop-zone:hover,
+.drag-drop-zone.dragover {
+  border-color: #0d6efd;
+  background-color: rgba(13, 110, 253, 0.05);
+}

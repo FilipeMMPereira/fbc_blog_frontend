@@ -1,0 +1,15 @@
+.category-form .card {
+  border: none;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+.category-form .form-control:focus,
+.category-form .form-select:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+.category-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}

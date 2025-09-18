@@ -1,0 +1,16 @@
+.card {
+  border: none;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+.card .bi {
+  opacity: 0.8;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.btn-sm .bi {
+  font-size: 0.875rem;
+}
