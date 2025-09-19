@@ -3,7 +3,7 @@
   <div class="container position-relative">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h1 class="fw-bold mb-3">Post Title Goes Here</h1>
+        <h1 class="fw-bold mb-3">{{post.title}}</h1>
         <div class="text-white-50">
           <span>Posted by Admin</span>
           <span class="mx-2">•</span>
@@ -19,8 +19,8 @@
   <div class="row gx-4 gx-lg-5 justify-content-between mt-5">
 
     <!-- Blog Entries Column -->
-    <main class="col-lg-9">
-      <article class="blog-post">
+    <main class="col-lg-8">
+      <article class="blog-post col-11">
         <!-- Imagem Principal -->
         <img class="img-fluid rounded shadow-sm mb-4"
           src="https://2.bp.blogspot.com/-vvG5hMTFOro/W6RaoxdAikI/AAAAAAAAK1k/jezYdP7fvfYvt15Jv8a0agrGQE2lMU8YgCKgBGAs/s1600/MASAI-2.jpg"
@@ -31,10 +31,10 @@
         <div class="post-content">
           <!-- Informações do Autor -->
           <div class="author-info mb-4 d-flex align-items-center">
-            <img src="/assets/img/author-avatar.jpg" alt="Autor" class="rounded-circle me-3"
-              style="width: 60px; height: 60px; object-fit: cover;">
+            <!-- <img src="/assets/img/author-avatar.jpg" alt="Autor" class="rounded-circle me-3"
+              style="width: 60px; height: 60px; object-fit: cover;"> -->
             <div>
-              <h6 class="fw-bold mb-1">John Doe</h6>
+              <h6 class="fw-bold mb-1">By Admin</h6>
               <p class="text-muted mb-0">
                 <small>
                   Publicado em 18 de Setembro, 2025 • 10 min de leitura
@@ -45,80 +45,10 @@
 
           <!-- Conteúdo Principal -->
           <section class="post-body">
-            <p class="lead">
-              A savana africana é um dos ecossistemas mais impressionantes do planeta, e o povo Maasai
-              tem uma conexão única com esta terra há milhares de anos.
-            </p>
-
-            <h2 class="h4 mt-5 mb-4">A Vida na Savana</h2>
-            <p>
-              Os Maasai são conhecidos por sua rica cultura e tradições que perduram através dos séculos.
-              Suas vidas estão intrinsecamente ligadas à natureza e aos animais que habitam o Serengeti.
-            </p>
-
-            <div class="row mt-4 mb-5">
-              <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Cultura Maasai</h5>
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">✦ Vestimentas tradicionais coloridas</li>
-                      <li class="mb-2">✦ Danças e rituais ancestrais</li>
-                      <li class="mb-2">✦ Conexão profunda com a natureza</li>
-                      <li>✦ Conhecimento medicinal tradicional</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Vida no Serengeti</h5>
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">✦ Pastoreio sustentável</li>
-                      <li class="mb-2">✦ Convivência com a vida selvagem</li>
-                      <li class="mb-2">✦ Preservação do ecossistema</li>
-                      <li>✦ Adaptação às mudanças climáticas</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <blockquote class="border-start border-primary border-4 ps-4 my-5">
-              <p class="h5 mb-2">
-                "A terra não nos pertence; somos parte dela."
-              </p>
-              <footer class="text-muted">
-                — Provérbio Maasai
-              </footer>
-            </blockquote>
-
-            <h2 class="h4 mt-5 mb-4">Desafios e Preservação</h2>
-            <p>
-              Apesar das mudanças modernas, os Maasai mantêm suas tradições vivas enquanto adaptam-se
-              aos novos tempos. A preservação de sua cultura e do ecossistema do Serengeti é vital
-              para as futuras gerações.
-            </p>
-
-            <div class="alert alert-info mt-4 mb-5" role="alert">
-              <h5 class="alert-heading">📚 Você sabia?</h5>
-              <p class="mb-0">
-                O Serengeti abriga a maior migração de mamíferos terrestres do mundo, com mais de
-                2 milhões de animais atravessando suas planícies anualmente.
-              </p>
-            </div>
+            {{post.content}}
           </section>
 
-          <!-- Tags -->
-          <div class="tags-section mt-5">
-            <h6 class="text-uppercase mb-3">Tags</h6>
-            <a href="#" class="badge bg-secondary me-2 mb-2">África</a>
-            <a href="#" class="badge bg-secondary me-2 mb-2">Cultura</a>
-            <a href="#" class="badge bg-secondary me-2 mb-2">Maasai</a>
-            <a href="#" class="badge bg-secondary me-2 mb-2">Serengeti</a>
-            <a href="#" class="badge bg-secondary mb-2">Tradições</a>
-          </div>
+
 
           <!-- Compartilhamento -->
           <div class="share-section border-top border-bottom my-5 py-4">
@@ -196,7 +126,7 @@
 
 
     <!-- Sidebar Widgets Column -->
-    <aside class="col-3">
+    <aside class="col-4">
       <app-sidebar></app-sidebar>
     </aside>
 

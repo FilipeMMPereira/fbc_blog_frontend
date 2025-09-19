@@ -1,25 +1,36 @@
-<section class="card">
+<section class="card shadow-sm border-0">
   <div class="card-body">
-    <section>
-      <h6 class="card-title">Categories</h6>
-      <ul class="list-unstyled">
-        <li><a href="">Inicio</a></li>
-        <li><a href="">Inicio</a></li>
-        <li><a href="">Inicio</a></li>
-        <li><a href="">Inicio</a></li>
+    <!-- Categories -->
+    <section class="mb-4">
+      <h6 class="card-title text-uppercase fw-bold border-start ps-2 mb-3">Categories</h6>
+      <ul class="list-unstyled ms-2">
+        @for (category of categories; track category.id) {
+        <li class="mb-2">
+          <a href="#" class="text-decoration-none text-dark d-block py-1 px-2 rounded hover-bg">
+            <i class="bi bi-folder me-2 text-primary"></i>{{category.name}}
+          </a>
+        </li>
+        }
       </ul>
-      <hr />
-      <h6 class="card-title">Recent Posts</h6>
     </section>
+
+    <hr />
+
+    <!-- Recent Posts -->
     <section>
+      <h6 class="card-title text-uppercase fw-bold border-start ps-2 mb-3">Recent Posts</h6>
       @for (post of posts; track post.id) {
-      <article class="row mb-3  align-items-center">
+      <article class="row g-2 mb-3 align-items-center">
         <div class="col-5">
-          <img src="{{post.imageUrl}}" alt="" class="img-fluid rounded">
+          <img src="{{post.imageUrl}}" alt="{{post.title}}" class="img-fluid rounded shadow-sm">
         </div>
-        <div class="col-7 p-0 m-0">
-          <a href="">{{post.title}}</a>
-          <p class="m-0">Jan 1, 2024</p>
+        <div class="col-7">
+          <a href="#" class="fw-semibold text-dark text-decoration-none d-block mb-1">
+            {{post.title}}
+          </a>
+          <small class="text-muted">
+            <i class="bi bi-calendar-event me-1"></i> Jan 1, 2024
+          </small>
         </div>
       </article>
       }

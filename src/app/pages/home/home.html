@@ -13,19 +13,22 @@
 
 <div class="container" style="width: 80%;">
   <div class="row gx-4 gx-lg-5 justify-content-between mt-5">
-    <main class=" col-9">
+    <main class=" col-8">
 
-      <section class="col-9">
+      <section class="col-11">
         @for (post of posts; track post.id) {
         <article class="mb-4">
-          <app-posts [post]="post"></app-posts>
+          <a [routerLink]="['/details', post.slug]" style="text-decoration: none; color: inherit;">
+            <app-posts [post]="post"></app-posts>
+          </a>
+
         </article>
         }
 
       </section>
 
     </main>
-    <aside class="col-3">
+    <aside class="col-4">
       <app-sidebar></app-sidebar>
     </aside>
   </div>

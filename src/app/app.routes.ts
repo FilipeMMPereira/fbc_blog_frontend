@@ -29,7 +29,7 @@ export const routes: Routes = [
   children: [
     { path: '', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
     { path: 'about', loadComponent: () => import('./pages/about/about').then(m => m.About) },
-    { path: 'details/post', loadComponent: () => import('./pages/details/details').then(m => m.Details) },
+    { path: 'details/:slug', loadComponent: () => import('./pages/details/details').then(m => m.Details) },
   ]
 },
 { path: '**', redirectTo: '', pathMatch: 'full' }

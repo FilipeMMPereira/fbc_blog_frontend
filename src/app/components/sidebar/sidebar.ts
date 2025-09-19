@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +7,56 @@ import { Component, Input } from '@angular/core';
   styleUrl: './sidebar.css'
 })
 export class Sidebar {
-    posts = [
-    {id: 1, title: 'First Post', content: 'This is the content of the first post.', imageUrl: 'https://placehold.co/800x500'},
-    {id: 2, title: 'Second Post', content: 'This is the content of the second post.', imageUrl: 'https://placehold.co/800x500'},
-    {id: 3, title: 'Third Post', content: 'This is the content of the third post.', imageUrl: 'https://placehold.co/800x500'}
-  ]
+  posts: { id: number, title: string, content: string, imageUrl: string, slug: String }[] = [];
+  categories: { id: number, name: string, slug: String }[] = [];
+
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  async loadPosts() {
+    try {
+      const response = await fetch('http://localhost:8080/public/post/');
+      if (response.ok) {
+        const data = await response.json();
+        this.posts = data.map((post: any) => ({
+          id: post.id,
+          title: post.title,
+          content: this.truncateText(post.content),
+          imageUrl: "http://localhost:8080/uploads/" + post.image,
+          slug: post.slug
+        }));
+      }
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('Erro ao carregar categorias:', error);
+      alert('Erro ao carregar categorias');
+    }
+  }
+
+  async loadCategories() {
+    try {
+      const response = await fetch('http://localhost:8080/public/category/');
+      if (response.ok) {
+        const data = await response.json();
+        this.categories = data.map((category: any) => ({
+          id: category.id,
+          name: category.name,
+          slug: category.slug
+        }));
+      }
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('Erro ao carregar categorias:', error);
+      alert('Erro ao carregar categorias');
+    }
+  }
+  truncateText = (text: String, limit: number = 300) => {
+    if (!text) return '';
+    return text.length > limit ? text.slice(0, limit) + '...' : text;
+  };
+
+
+  ngOnInit() {
+    this.loadPosts();
+    this.loadCategories();
+  }
 }

@@ -11,13 +11,22 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './admin.css'
 })
 export class AdminLayout implements OnInit {
+  isSidebarVisible = true;
+
   ngOnInit() {
     // Carrega o script do Bootstrap quando o componente é inicializado
     this.loadBootstrapScript();
+    // Esconde a sidebar em telas pequenas inicialmente
+    this.checkScreenSize();
+    window.addEventListener('resize', () => this.checkScreenSize());
+  }
+
+  private checkScreenSize() {
+    this.isSidebarVisible = window.innerWidth >= 992;
   }
 
   toggleSidebar() {
-    document.body.classList.toggle('sb-sidenav-toggled');
+    this.isSidebarVisible = !this.isSidebarVisible;
   }
 
   private loadBootstrapScript() {

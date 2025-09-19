@@ -85,9 +85,9 @@ export class PostCreate implements OnInit {
 
       const response = await fetch('http://localhost:8080/public/post/create', {
         method: 'POST',
-        // headers: {
-        //   'Authorization': `Bearer ${token}`
-        // },
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
         body: formData
       });
 
