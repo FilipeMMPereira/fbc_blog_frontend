@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { RouterLink, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css'
 })
@@ -10,10 +11,12 @@ export class Sidebar {
   posts: { id: number, title: string, content: string, imageUrl: string, slug: String }[] = [];
   categories: { id: number, name: string, slug: String }[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, private route: ActivatedRoute) { }
 
   async loadPosts() {
     try {
+      const slug = this.route.snapshot.paramMap.get('slug');
+      console.log(slug);
       const response = await fetch('http://localhost:8080/public/post/');
       if (response.ok) {
         const data = await response.json();
@@ -49,14 +52,18 @@ export class Sidebar {
       alert('Erro ao carregar categorias');
     }
   }
+
   truncateText = (text: String, limit: number = 300) => {
     if (!text) return '';
     return text.length > limit ? text.slice(0, limit) + '...' : text;
   };
 
-
   ngOnInit() {
+
     this.loadPosts();
     this.loadCategories();
+
+
   }
+
 }

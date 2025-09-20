@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { Posts } from "../../components/posts/posts";
 import { CommonModule } from '@angular/common';
 import { Sidebar } from "../../components/sidebar/sidebar";
-import { RouterLink } from "@angular/router";
+import { RouterLink, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -13,22 +13,32 @@ import { RouterLink } from "@angular/router";
 
 })
 export class Home {
-  posts: { id: number, title: string, content: string, imageUrl: string, slug:string }[] = [];
+  posts: { id: number, title: string, content: string, imageUrl: string, slug:string, category:{id: number, name: string, slug: String} }[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, private route: ActivatedRoute) { }
 
   async loadPosts() {
     try {
+
       const response = await fetch('http://localhost:8080/public/post/');
       if (response.ok) {
+
+        const categorySlug = this.route.snapshot.paramMap.get('slug');
+        console.log(categorySlug);
         const data = await response.json();
         this.posts = data.map((post: any) => ({
           id: post.id,
           title: post.title,
           content: this.truncateText(post.content),
           imageUrl: "http://localhost:8080/uploads/" + post.image,
-          slug: post.slug
+          slug: post.slug,
+          category: {id: post.category.id, name: post.category.name, slug: post.category.slug}
         }));
+
+         if (categorySlug) {
+          this.posts = this.posts.filter((post: any) => post.category.slug === categorySlug);
+        }
+
       }
       this.cdr.detectChanges();
     } catch (error) {
@@ -42,8 +52,13 @@ export class Home {
   };
 
 
+
   ngOnInit() {
-    this.loadPosts();
+    this.route.paramMap.subscribe(params => {
+      this.loadPosts();
+
+    });
+
   }
 
 }

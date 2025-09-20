@@ -33,6 +33,7 @@ export const routes: Routes = [
         loadComponent: () => import('./layouts/layout/layout').then(m => m.Layout),
         children: [
           { path: '', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
+          { path: 'category/:slug', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
           { path: 'about', loadComponent: () => import('./pages/about/about').then(m => m.About) },
           { path: 'details/:slug', loadComponent: () => import('./pages/details/details').then(m => m.Details) },
         ]

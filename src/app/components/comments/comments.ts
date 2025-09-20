@@ -12,16 +12,17 @@ import { CommonModule } from '@angular/common';
 export class Comments {
   @Input() postId!: number;
   commentText: string = '';
-  comments: { id: number, content: string, userId: number, postId: number, user:{id: number, name: string} }[] = [];
+  comments: { id: number, content: string, userId: number, postId: number, user: { id: number, name: string } }[] = [];
 
   constructor(private cdr: ChangeDetectorRef, private router: Router) { }
 
   async publishComment() {
     const token = localStorage.getItem('token');
-
+    
+    // redireciona para login se nao tiver token
     if (!token) {
       alert('Você precisa estar logado para comentar');
-      this.router.navigate(['/login']); // redireciona para login
+      this.router.navigate(['/login']);
       return;
     }
 
@@ -66,7 +67,7 @@ export class Comments {
 
   async loadComments() {
     try {
-      // const slug = this.route.snapshot.paramMap.get('slug');
+
       const response = await fetch('http://localhost:8080/public/comments');
       if (response.ok) {
         const data = await response.json();
@@ -76,7 +77,7 @@ export class Comments {
           content: comment.content,
           userId: comment.userId,
           postId: comment.postId,
-          user: {id: comment.user.id, name: comment.user.name}
+          user: { id: comment.user.id, name: comment.user.name }
 
         }));
       }
