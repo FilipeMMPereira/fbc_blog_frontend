@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -27,6 +27,8 @@ export class PostCreate implements OnInit {
   imageFile: File | null = null;
   categories: Category[] = [];
 
+  constructor(private cdr: ChangeDetectorRef) { }
+
   ngOnInit() {
     this.loadCategories();
   }
@@ -41,6 +43,7 @@ export class PostCreate implements OnInit {
       console.error('Erro ao carregar categorias:', error);
       alert('Erro ao carregar categorias');
     }
+    this.cdr.detectChanges();
   }
 
   onFileSelected(event: any) {
@@ -54,6 +57,7 @@ export class PostCreate implements OnInit {
       }
       this.imagePreviewUrl = URL.createObjectURL(file);
     }
+    this.cdr.detectChanges();
   }
 
   ngOnDestroy() {
@@ -61,6 +65,7 @@ export class PostCreate implements OnInit {
     if (this.imagePreviewUrl) {
       URL.revokeObjectURL(this.imagePreviewUrl);
     }
+    this.cdr.detectChanges();
   }
 
   async onSubmit() {
@@ -102,6 +107,7 @@ export class PostCreate implements OnInit {
           categoryId: 0
         };
         this.imageFile = null;
+        this.cdr.detectChanges();
       } else {
         alert('Erro ao criar post: ' + data.error);
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,6 +14,7 @@ export class Dashboard implements OnInit {
     totalCategories: 0,
     totalComments: 0
   };
+  constructor(private cdr: ChangeDetectorRef) { }
 
   recentPosts: any[] = [];
 
@@ -40,5 +41,6 @@ export class Dashboard implements OnInit {
         category: 'Programação'
       }
     ];
+    this.cdr.detectChanges();
   }
 }

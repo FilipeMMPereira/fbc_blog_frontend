@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -14,6 +14,8 @@ export class CategoryCreate {
     name: '',
     description: '',
   };
+
+  constructor(private cdr: ChangeDetectorRef) { }
 
   generateSlug(name: string) {
     return name
@@ -49,6 +51,7 @@ export class CategoryCreate {
           name: '',
           description: '',
         };
+        this.cdr.detectChanges();
       } else {
         alert('Erro ao criar categoria: ' + data.error);
       }

@@ -2,11 +2,12 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { Comments } from "../../components/comments/comments";
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [Sidebar, CommonModule],
+  imports: [Sidebar, CommonModule, Comments],
   templateUrl: './details.html',
   styleUrl: './details.css'
 })

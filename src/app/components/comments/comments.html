@@ -1,0 +1,37 @@
+<section class="comments-section mt-5">
+  <h3 class="h5 mb-4">Comentários (2)</h3>
+
+  <!-- Formulário de Comentário -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h6 class="card-title mb-3">Deixe seu comentário</h6>
+      <div class="mb-3">
+        <textarea class="form-control" rows="3" placeholder="Escreva seu comentário aqui..."
+          [(ngModel)]="commentText"></textarea>
+      </div>
+      <button class="btn btn-primary" (click)="publishComment()">Publicar Comentário</button>
+    </div>
+  </div>
+
+  <!-- Lista de Comentários -->
+  <div class="comments-list">
+    <!-- Comentário 1 -->
+    @for(comment of comments; track comment.id) {
+    <div class="comment mb-4 p-3 bg-light rounded">
+      <div class="d-flex">
+        <img src="/assets/img/user.png" alt="Usuário" class="rounded-circle me-3"
+          style="width: 45px; height: 45px; object-fit: cover;">
+        <div>
+          <h6 class="fw-bold mb-1">{{comment?.user?.name}}</h6>
+          <p class="text-muted small mb-2">2 dias atrás</p>
+          <p class="mb-0">
+            {{comment.content}}
+          </p>
+        </div>
+      </div>
+    </div>
+    }
+
+
+  </div>
+</section>

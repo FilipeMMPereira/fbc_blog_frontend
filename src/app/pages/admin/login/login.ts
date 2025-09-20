@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -14,6 +14,7 @@ export class Login {
     email: '',
     password: ''
   };
+  constructor(private cdr: ChangeDetectorRef) { }
 
   async onSubmit() {
     try {
@@ -32,6 +33,7 @@ export class Login {
         localStorage.setItem('token', data.token);
         // Redirecionar para a página de admin
         // TODO: Implementar redirecionamento
+        this.cdr.detectChanges();
       } else {
         alert('Login falhou: ' + data.message);
       }

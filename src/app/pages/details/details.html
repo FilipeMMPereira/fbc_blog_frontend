@@ -23,7 +23,7 @@
       <article class="blog-post col-11">
         <!-- Imagem Principal -->
         <img class="img-fluid rounded shadow-sm mb-4"
-          src="https://2.bp.blogspot.com/-vvG5hMTFOro/W6RaoxdAikI/AAAAAAAAK1k/jezYdP7fvfYvt15Jv8a0agrGQE2lMU8YgCKgBGAs/s1600/MASAI-2.jpg"
+          src="{{post.imageUrl}}"
           alt="Maasai Serengeti" style="min-width: 90%;max-width: 100%; height: auto; max-height:90vh;  margin: 0 auto;">
 
 
@@ -70,53 +70,7 @@
         </div>
 
         <!-- Seção de Comentários -->
-        <section class="comments-section mt-5">
-          <h3 class="h5 mb-4">Comentários (2)</h3>
-
-          <!-- Formulário de Comentário -->
-          <div class="card mb-4">
-            <div class="card-body">
-              <h6 class="card-title mb-3">Deixe seu comentário</h6>
-              <div class="mb-3">
-                <textarea class="form-control" rows="3" placeholder="Escreva seu comentário aqui..."></textarea>
-              </div>
-              <button class="btn btn-primary">Publicar Comentário</button>
-            </div>
-          </div>
-
-          <!-- Lista de Comentários -->
-          <div class="comments-list">
-            <!-- Comentário 1 -->
-            <div class="comment mb-4 p-3 bg-light rounded">
-              <div class="d-flex">
-                <img src="/assets/img/user-1.jpg" alt="Usuário" class="rounded-circle me-3"
-                  style="width: 45px; height: 45px; object-fit: cover;">
-                <div>
-                  <h6 class="fw-bold mb-1">Maria Silva</h6>
-                  <p class="text-muted small mb-2">2 dias atrás</p>
-                  <p class="mb-0">
-                    Artigo fantástico! Sempre tive curiosidade sobre a cultura Maasai.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Comentário 2 -->
-            <div class="comment p-3 bg-light rounded">
-              <div class="d-flex">
-                <img src="/assets/img/user-2.jpg" alt="Usuário" class="rounded-circle me-3"
-                  style="width: 45px; height: 45px; object-fit: cover;">
-                <div>
-                  <h6 class="fw-bold mb-1">João Santos</h6>
-                  <p class="text-muted small mb-2">3 dias atrás</p>
-                  <p class="mb-0">
-                    As fotos são incríveis! Adorei aprender mais sobre o Serengeti.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <app-comments [postId]="post.id"></app-comments>
       </article>
     </main>
 
