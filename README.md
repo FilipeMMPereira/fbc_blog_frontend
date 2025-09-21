@@ -35,7 +35,7 @@ Um sistema de blog moderno desenvolvido com Angular, oferecendo funcionalidades 
 ### Instalação
 ```bash
 # Clone o repositório
-git clone [URL_DO_REPOSITORIO]
+git clone https://github.com/FilipeMMPereira/fbc_blog_frontend.git
 cd FbcBlogFrontend
 
 # Instale as dependências
