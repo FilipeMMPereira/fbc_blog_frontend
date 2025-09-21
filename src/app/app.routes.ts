@@ -10,9 +10,6 @@ export const routes: Routes = [
     canActivate: [AuthService],
     canActivateChild: [AuthService],
     children: [
-      // Rota de login - fora do layout admin
-      // { path: 'login', loadComponent: () => import('./pages/auth/login/login').then(m => m.Login) },
-      // Layout admin com suas sub-rotas
       {
         path: '',
         loadComponent: () => import('./layouts/admin/admin').then(m => m.AdminLayout),
@@ -21,7 +18,7 @@ export const routes: Routes = [
           { path: 'category/create', loadComponent: () => import('./pages/admin/category-create/category-create').then(m => m.CategoryCreate) },
           { path: 'post/create', loadComponent: () => import('./pages/admin/post-create/post-create').then(m => m.PostCreate) },
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-          // { path: '**', redirectTo: 'dashboard' }
+          { path: '**', redirectTo: 'dashboard' }
         ]
       }
     ]
@@ -45,7 +42,7 @@ export const routes: Routes = [
         ]
       },
     ]
-  }
-  // { path: '**', redirectTo: '', pathMatch: 'full' }
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 
 ];
