@@ -21,8 +21,10 @@ export class Comments {
 
     // redireciona para login se nao tiver token
     if (!token) {
-      alert('Você precisa estar logado para comentar');
-      this.router.navigate(['/login']);
+      const userConsent = confirm('Você precisa estar logado para comentar. Deseja ser redirecionado para a página de login?');
+      if (userConsent) {
+        this.router.navigate(['/login']);
+      }
       return;
     }
 
