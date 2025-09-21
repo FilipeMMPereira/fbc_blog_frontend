@@ -1,18 +1,23 @@
 import { Routes } from '@angular/router';
+import { AuthService } from './services/auth.service';
+
+
 
 export const routes: Routes = [
   // Rota administrativa
   {
     path: 'admin',
+    canActivate: [AuthService],
+    canActivateChild: [AuthService],
     children: [
       // Rota de login - fora do layout admin
-      { path: 'login', loadComponent: () => import('./pages/admin/login/login').then(m => m.Login) },
+      // { path: 'login', loadComponent: () => import('./pages/auth/login/login').then(m => m.Login) },
       // Layout admin com suas sub-rotas
       {
         path: '',
         loadComponent: () => import('./layouts/admin/admin').then(m => m.AdminLayout),
         children: [
-          { path: 'dashboard', loadComponent: () => import('./pages/admin/dashboard/dashboard').then(m => m.Dashboard) },
+          { path: '', loadComponent: () => import('./pages/admin/dashboard/dashboard').then(m => m.Dashboard) },
           { path: 'category/create', loadComponent: () => import('./pages/admin/category-create/category-create').then(m => m.CategoryCreate) },
           { path: 'post/create', loadComponent: () => import('./pages/admin/post-create/post-create').then(m => m.PostCreate) },
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -26,7 +31,8 @@ export const routes: Routes = [
     path: '',
 
     children: [
-      { path: 'login', loadComponent: () => import('./pages/admin/login/login').then(m => m.Login) },
+      { path: 'login', loadComponent: () => import('./pages/auth/login/login').then(m => m.Login) },
+      { path: 'create-account', loadComponent: () => import('./pages/auth/create-account/create-account').then(m => m.CreateAccount) },
       // Layout admin com suas sub-rotas
       {
         path: '',

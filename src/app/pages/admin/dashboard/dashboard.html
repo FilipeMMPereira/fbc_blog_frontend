@@ -63,9 +63,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let post of recentPosts">
+          <tr *ngFor="let post of posts">
             <td>{{post.title}}</td>
-            <td><span class="badge bg-secondary">{{post.category}}</span></td>
+            <td><span class="badge bg-secondary">{{post.category.name}}</span></td>
             <td>{{post.createdAt | date:'dd/MM/yyyy'}}</td>
             <td>
               <button class="btn btn-sm btn-primary me-1">

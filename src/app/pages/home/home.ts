@@ -13,7 +13,7 @@ import { RouterLink, ActivatedRoute } from "@angular/router";
 
 })
 export class Home {
-  posts: { id: number, title: string, content: string, imageUrl: string, slug:string, category:{id: number, name: string, slug: String} }[] = [];
+  posts: { id: number, title: string, content: string, imageUrl: string, slug:string, createdAt: string, category:{id: number, name: string, slug: String} }[] = [];
 
   constructor(private cdr: ChangeDetectorRef, private route: ActivatedRoute) { }
 
@@ -32,7 +32,8 @@ export class Home {
           content: this.truncateText(post.content),
           imageUrl: "http://localhost:8080/uploads/" + post.image,
           slug: post.slug,
-          category: {id: post.category.id, name: post.category.name, slug: post.category.slug}
+          category: {id: post.category.id, name: post.category.name, slug: post.category.slug},
+          createdAt: post.createdAt
         }));
 
          if (categorySlug) {

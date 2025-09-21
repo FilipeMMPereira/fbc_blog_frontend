@@ -12,12 +12,13 @@ import { Comments } from "../../components/comments/comments";
   styleUrl: './details.css'
 })
 export class Details {
-  post: { id: number; title: string; content: string; imageUrl: string; slug: string } = {
+  post: { id: number; title: string; content: string; imageUrl: string; slug: string, createdAt: string } = {
     id: 0,
     title: '',
     content: '',
     imageUrl: '',
-    slug: ''
+    slug: '',
+    createdAt: ''
   };
 
 
@@ -35,7 +36,8 @@ export class Details {
           title: post.title,
           content: post.content,
           imageUrl: "http://localhost:8080/uploads/" + post.image,
-          slug: post.slug
+          slug: post.slug,
+          createdAt: post.createdAt
         };
       }
       this.cdr.detectChanges();

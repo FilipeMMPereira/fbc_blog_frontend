@@ -1,11 +1,12 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink, Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -14,7 +15,8 @@ export class Login {
     email: '',
     password: ''
   };
-  constructor(private cdr: ChangeDetectorRef) { }
+
+  constructor(private cdr: ChangeDetectorRef, private location: Location) { }
 
   async onSubmit() {
     try {
@@ -32,7 +34,7 @@ export class Login {
         // Guardar o token
         localStorage.setItem('token', data.token);
         // Redirecionar para a página de admin
-        // TODO: Implementar redirecionamento
+        this.location.back();
         this.cdr.detectChanges();
       } else {
         alert('Login falhou: ' + data.message);
